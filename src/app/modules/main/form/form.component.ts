@@ -67,12 +67,8 @@ export class FormComponent {
   // adding Updated value
   updateUser(id:number)
   {
-    console.log(id)
-    console.log(this.index)
   let user = this.UserArray.find((arr:any)=>{ if(arr.iD===id)
     return arr })
-
-    console.log(user)
     if(this.profileForm.valid)
     {
     user.iD = this.profileForm.value['iD']
