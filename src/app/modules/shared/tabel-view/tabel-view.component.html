@@ -1,0 +1,31 @@
+<div class="container-main">
+  <div class="container">
+    <div>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact number</th>
+            <th>state</th>
+            <th rowspan="2">Action</th>
+          </tr>
+        </tbody>
+        <tbody>
+        <tr *ngFor="let val of user, let i=index">
+          <td>{{val.iD}}</td>
+          <td>{{val.name}}</td>
+          <td>{{val.email}}</td>
+          <td>{{val.phoneNo}}</td>
+          <td>{{val.state}}</td>
+          <td>
+            <button (click)="editUser(user)">Edit</button>
+            <button (click)="deleteUser(i)">Delete</button>
+          </td>
+            
+          
+        </tbody>
+      </table>
+    </div>
+  </div> 

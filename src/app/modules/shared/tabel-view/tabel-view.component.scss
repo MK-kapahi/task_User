@@ -1,0 +1,15 @@
+.container
+{
+    width: 600px;
+    height: 500px;
+    display: flex;
+}
+
+.container-main
+{
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

@@ -1,0 +1,141 @@
+<div class="container d-flex" >
+  <div class="forms">
+    <form
+      class="row needs-validation"
+      [formGroup]="profileForm"
+      (ngSubmit)="submit()"
+    >
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label"
+          >Unique Id</label
+        >
+        <div class="input-group has-validation">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="iD"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+          />
+          <p
+            *ngIf="
+              profileForm.controls['iD'].touched &&
+              profileForm.controls['iD'].hasError('required')
+            "
+            style="color: red"
+          >
+            PLease Enter a valid Id
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <div class="input-group has-validation">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            id="validationCustom01"
+            value="Mark"
+            required
+          />
+          <p
+            *ngIf="
+              (profileForm.controls['name'].touched &&
+                profileForm.controls['name'].hasError('required')) ||
+              profileForm.controls['name'].hasError('pattern')
+            "
+            style="color: red"
+          >
+            PLease Enter a valid name
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label">Email</label>
+        <div class="input-group has-validation">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="email"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+          <p
+            *ngIf="
+              (profileForm.controls['email'].touched &&
+                profileForm.controls['email'].hasError('required')) ||
+              profileForm.controls['email'].hasError('pattern')
+            "
+            style="color: red"
+          >
+            PLease Enter a valid email
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label"
+          >Contact Number</label
+        >
+        <div class="input-group has-validation">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="phoneNo"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+          <p
+            *ngIf="
+              (profileForm.controls['phoneNo'].touched &&
+                profileForm.controls['phoneNo'].hasError('required')) ||
+              profileForm.controls['phoneNo'].hasError('pattern')
+            "
+            style="color: red"
+          >
+            PLease Enter a valid Conatct Number
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label for="validationCustomUsername" class="form-label"
+          >state</label
+        >
+        <div class="input-group has-validation">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="state"
+            id="validationCustomUsername"
+            aria-describedby="inputGroupPrepend"
+            required
+          />
+          <p
+            *ngIf="
+              (profileForm.controls['state'].touched &&
+                profileForm.controls['state'].hasError('required')) ||
+              profileForm.controls['state'].hasError('pattern')
+            "
+            style="color: red"
+          >
+            PLease Enter a state
+          </p>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <button class="btn btn-primary" type="submit">Add User</button>
+      </div>
+      <div class="col-6" *ngIf="updateButtonShow" >
+        <button class="btn btn-primary" type="button" (click)="updateUser(this.profileForm.value['iD'])">Update</button>
+      </div>
+    </form>
+  </div>
+  <div>
+    <app-tabel-view [user]="UserArray" (editRequest)="update($event)"></app-tabel-view>
+  </div>
+</div>
