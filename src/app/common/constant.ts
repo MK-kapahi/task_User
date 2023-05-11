@@ -12,5 +12,7 @@ export const REGEX = {
  export const Api = 
  {
     ADD :"add-emp",
-    GET :"api"
+    GET :"api/get",
+    Update :"update-emp",
+    Delete :"delete-emp"
  }

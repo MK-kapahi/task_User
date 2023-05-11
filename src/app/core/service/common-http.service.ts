@@ -21,8 +21,9 @@ export class CommonHttpService {
     return this.http.post(`${baseUrl}/${url}`,data)
   }
 
-  httpUpdate( url :string , data :any , id : string)
+  httpUpdate( url :string  , id : string,data :any)
   {
+    console.log(id)
     return this.http.put(`${baseUrl}/${url}/${id}`,data)
   }
 

@@ -12,14 +12,14 @@
           </tr>
         </tbody>
         <tbody>
-        <tr *ngFor="let val of user, let i=index">
-          <td>{{val.iD}}</td>
+        <tr *ngFor="let val of userData, let i=index">
+          <td>{{val._id}}</td>
           <td>{{val.employeeName}}</td>
           <td>{{val.departments}}</td>
           <td>{{val.salary}}</td>
           <td>
             <button (click)="editUser(user)" class="btn btn-info">Edit</button>
-            <button (click)="deleteUser(i)" class="btn btn-danger" >Delete</button>
+            <button (click)="deleteUser(i,val._id)" class="btn btn-danger" >Delete</button>
           </td>
             
           
