@@ -1,49 +1,44 @@
+
+<app-navbar></app-navbar>
 <div class="container d-flex" >
-  <div class="forms">
+  <div class="forms d-flex flex-column">
+    <h1>Add Employee </h1>
     <form
-      class="row needs-validation"
+      class="row needs-validation d-flex flex-column"
       [formGroup]="profileForm"
       (ngSubmit)="submit()"
     >
-      <div class="col-md-4">
-        <label for="validationCustomUsername" class="form-label"
-          >Unique Id</label
-        >
-        <div class="input-group has-validation">
-          <input
-            type="text"
-            class="form-control"
-            formControlName="iD"
-            id="validationCustomUsername"
-            aria-describedby="inputGroupPrepend"
-          />
-          <p
-            *ngIf="
-              profileForm.controls['iD'].touched &&
-              profileForm.controls['iD'].hasError('required')
-            "
-            style="color: red"
-          >
-            PLease Enter a valid Id
-          </p>
-        </div>
+    <div class="col-12" *ngIf="updateButtonShow">
+      <label for="validationCustomUsername" class="form-label"
+        >Unique Id</label
+      >
+      <div class="input-group has-validation">
+        <input
+          type="text"
+          class="form-control"
+          formControlName="iD"
+          id="validationCustomUsername"
+          aria-describedby="inputGroupPrepend"
+          [disabled]="true"
+        />
       </div>
-      <div class="col-md-4">
-        <label for="validationCustom01" class="form-label">First name</label>
+      </div>
+      <div class="col-12">
+        <label for="validationCustom01" class="form-label">Employee Name</label>
         <div class="input-group has-validation">
           <input
             type="text"
             class="form-control"
-            formControlName="name"
+            formControlName="employeeName"
             id="validationCustom01"
             value="Mark"
             required
           />
           <p
             *ngIf="
-              (profileForm.controls['name'].touched &&
-                profileForm.controls['name'].hasError('required')) ||
-              profileForm.controls['name'].hasError('pattern')
+              (profileForm.controls['employeeName'].touched &&
+                profileForm.controls['employeeName'].hasError('required')) ||
+              profileForm.controls['employeeName'].hasError('pattern')
             "
             style="color: red"
           >
@@ -51,86 +46,55 @@
           </p>
         </div>
       </div>
-      <div class="col-md-4">
-        <label for="validationCustomUsername" class="form-label">Email</label>
+      <div class="col-12">
+        <label for="validationCustomUsername" class="form-label">Departments</label>
         <div class="input-group has-validation">
-          <input
-            type="text"
+          <textarea
             class="form-control"
-            formControlName="email"
+            formControlName="departments"
             id="validationCustomUsername"
             aria-describedby="inputGroupPrepend"
-            required
-          />
+            row=1
+            ></textarea>
           <p
             *ngIf="
-              (profileForm.controls['email'].touched &&
-                profileForm.controls['email'].hasError('required')) ||
-              profileForm.controls['email'].hasError('pattern')
+              (profileForm.controls['departments'].touched &&
+                profileForm.controls['departments'].hasError('required'))
             "
             style="color: red"
           >
-            PLease Enter a valid email
+            Please Enter Department
           </p>
         </div>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-12">
         <label for="validationCustomUsername" class="form-label"
-          >Contact Number</label
+          >Salary </label
         >
         <div class="input-group has-validation">
           <input
-            type="text"
+            type="number"
             class="form-control"
-            formControlName="phoneNo"
+            formControlName="salary"
             id="validationCustomUsername"
             aria-describedby="inputGroupPrepend"
-            required
           />
           <p
             *ngIf="
-              (profileForm.controls['phoneNo'].touched &&
-                profileForm.controls['phoneNo'].hasError('required')) ||
-              profileForm.controls['phoneNo'].hasError('pattern')
+              (profileForm.controls['salary'].touched &&
+                profileForm.controls['salary'].hasError('required')) 
             "
             style="color: red"
           >
-            PLease Enter a valid Conatct Number
+            PLease Enter Salary
           </p>
         </div>
       </div>
-
-      <div class="col-md-4">
-        <label for="validationCustomUsername" class="form-label"
-          >state</label
-        >
-        <div class="input-group has-validation">
-          <input
-            type="text"
-            class="form-control"
-            formControlName="state"
-            id="validationCustomUsername"
-            aria-describedby="inputGroupPrepend"
-            required
-          />
-          <p
-            *ngIf="
-              (profileForm.controls['state'].touched &&
-                profileForm.controls['state'].hasError('required')) ||
-              profileForm.controls['state'].hasError('pattern')
-            "
-            style="color: red"
-          >
-            PLease Enter a state
-          </p>
-        </div>
-      </div>
-
-      <div class="col-6">
+      <div class="col-md-6" style=" margin: 50px;">
         <button class="btn btn-primary" type="submit">Add User</button>
       </div>
-      <div class="col-6" *ngIf="updateButtonShow" >
+      <div class="col-md-6" *ngIf="updateButtonShow" >
         <button class="btn btn-primary" type="button" (click)="updateUser(this.profileForm.value['iD'])">Update</button>
       </div>
     </form>

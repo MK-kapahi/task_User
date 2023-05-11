@@ -6,22 +6,20 @@
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Email</th>
-            <th>Contact number</th>
-            <th>state</th>
+            <th>Departments</th>
+            <th>Salary</th>
             <th rowspan="2">Action</th>
           </tr>
         </tbody>
         <tbody>
         <tr *ngFor="let val of user, let i=index">
           <td>{{val.iD}}</td>
-          <td>{{val.name}}</td>
-          <td>{{val.email}}</td>
-          <td>{{val.phoneNo}}</td>
-          <td>{{val.state}}</td>
+          <td>{{val.employeeName}}</td>
+          <td>{{val.departments}}</td>
+          <td>{{val.salary}}</td>
           <td>
-            <button (click)="editUser(user)">Edit</button>
-            <button (click)="deleteUser(i)">Delete</button>
+            <button (click)="editUser(user)" class="btn btn-info">Edit</button>
+            <button (click)="deleteUser(i)" class="btn btn-danger" >Delete</button>
           </td>
             
           

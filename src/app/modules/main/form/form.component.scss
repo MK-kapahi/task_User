@@ -1,21 +1,26 @@
+
 .container{
     width: 1200px;
     height: 1000px;
     display: flex;
+    border-radius: 10px solid black;
 }
 
 .forms
 {
-    width: 550px;
-    height: 550px;
+    width: 600px;
+    height: 600px;
     background-color: rgb(181, 235, 203);
-    margin: auto;
-    align-self: center;
     display: flex;
-    margin: 10px;
-    padding: 10px;
     color: black;
     font-size: medium;
     font-style: oblique;
+    border-radius: 5px solid black;
+    padding: 50px;
 
+}
+
+.input-group
+{
+    width: inherit;
 }

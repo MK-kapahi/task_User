@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { REGEX } from 'src/app/common/constant';
-
+import { CurdOperationService } from 'src/app/core/service/curd-operation.service';
+import { v4 as uuidv4 } from 'uuid';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -15,13 +16,12 @@ export class FormComponent {
   updateButtonShow : boolean = false;
   index = 0;
 
-  constructor(private formBuilder : FormBuilder , private toaster : ToastrService){
+  constructor(private formBuilder : FormBuilder , private toaster : ToastrService ,  private employeeservice : CurdOperationService){
     this.profileForm = this.formBuilder.group({
-      iD :["",Validators.compose([Validators.required])],
-      name : ["", Validators.compose([Validators.required ,Validators.pattern(REGEX.USERNAME)])], 
-      email :  ["", Validators.compose([Validators.required , Validators.pattern(REGEX.EMAIL)])],
-      phoneNo : ["",Validators.compose([Validators.required , Validators.pattern('^[6-9]\\d{9}$')])],
-      state : ["",Validators.compose([Validators.required])]
+      iD : uuidv4(),
+      employeeName : ["", Validators.compose([Validators.required ])], 
+      departments :  ["", Validators.compose([Validators.required ])],
+      salary : ["",Validators.compose([Validators.required])],
     })
 
   }
@@ -33,6 +33,9 @@ export class FormComponent {
     {
     console.log(this.profileForm.value);
        this.UserArray.push(this.profileForm.value);
+      //  this.employeeservice.addEmployee(this.profileForm.value).subscribe((response)=>{
+      //   console.log(response)
+      //  })
        this.toaster.success('User Added successfully', " success", {
         titleClass: "center",
         messageClass: "center",
@@ -54,10 +57,9 @@ export class FormComponent {
       this.index = this.UserArray.indexOf(user)
       this.profileForm.patchValue({
         iD : user.iD,
-        name: user.name,
-        email : user.email,
-        phoneNo: user.phoneNo,
-        state: user.state 
+        employeeName: user.employeeName,
+        departments : user.departments,
+        salary: user.salary
      })
     }
 
@@ -72,20 +74,18 @@ export class FormComponent {
     if(this.profileForm.valid)
     {
     user.iD = this.profileForm.value['iD']
-    user.name = this.profileForm.value['name']
-    user.email = this.profileForm.value['email']
-    user.phoneNo = this.profileForm.value['phoneNo']
-    user.state = this.profileForm.value['state']
-
+    user.employeeName = this.profileForm.value['employeeName']
+    user.departments = this.profileForm.value['departments']
+    user.salary = this.profileForm.value['salary']
     this.UserArray[this.index]=user;
-    }
-
     this.toaster.success('User update successfull', " success", {
       titleClass: "center",
       messageClass: "center",
     })
+    }
+
     this.profileForm.reset()
-    
+    this.updateButtonShow=false
   }
 
 
