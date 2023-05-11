@@ -7,17 +7,14 @@ let employee = new Schema(
       value: uuidv4(),
       type: String,
     },
-    name: {
+    employeeName: {
       type: String,
-      required: [true, "Pleasw Enter Name"],
     },
-    department: {
+    departments: {
       type: String,
-      required: [true, "Pleasw Enter Department"],
     },
     salary: {
       type: Number,
-      required: [true, "Pleasw Enter Salary"],
     },
   },
   {

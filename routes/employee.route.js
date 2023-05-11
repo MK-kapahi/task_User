@@ -2,16 +2,7 @@ const express = require('express');
 const app = express();
 const employeRoute = express.Router();
 let Employee = require('../model/employe');
-// Add Book
-employeRoute.route('api/add-emp').post((req, res, next) => {
-    Employee.create(req.body, (error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      res.json(data)
-    }
-  })
-});
+
 // Get all Book
 employeRoute.route('/get').get(async (req, res) => {
     await Employee.find().then((err,result)=>{
